@@ -6,7 +6,8 @@ After=network.target
 Type=simple
 User=root
 ExecStart=/usr/local/bin/ttyd -p 2222 login
-Restart=always
+ExecStop=/usr/bin/pkill ttyd
+Restart=on-failure
 RestartSec=10
 
 [Install]

@@ -9,7 +9,7 @@
     - name: get the ttyd program
       get_url:
         url: https://github.com/tsl0922/ttyd/releases/download/1.5.1/ttyd_linux.x86_64
-        dest: /usr/local/bin
+        dest: /usr/local/bin/ttyd
         mode: '0755'
 
     - name: create the service 
@@ -24,4 +24,5 @@
       systemd:
         name: ttyd.service
         state: restarted
+        enabled: yes
         daemon_reload: yes
