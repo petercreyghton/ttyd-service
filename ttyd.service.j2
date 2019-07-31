@@ -1,0 +1,13 @@
+[Unit]
+Description=Web console
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/ttyd -p 2222 login
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

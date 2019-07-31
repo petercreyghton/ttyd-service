@@ -1,0 +1,27 @@
+---
+
+- name: install ttyd as a service
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: get the ttyd program
+      get_url:
+        url: https://github.com/tsl0922/ttyd/releases/download/1.5.1/ttyd_linux.x86_64
+        dest: /usr/local/bin
+        mode: '0755'
+
+    - name: create the service 
+      template:
+        src: ttyd.service.j2
+        dest: /lib/systemd/system/ttyd.service
+        owner: root
+        mode: '0644'
+
+
+    - name: start the ttyd service
+      systemd:
+        name: ttyd.service
+        state: restarted
+        daemon_reload: yes
