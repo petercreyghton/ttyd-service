@@ -1,2 +1,4 @@
-# ttyd service for console access via HTTP through port 2222
+# ttyd service for remote servers
+
+TTYD provides console access via HTTP through port 2222
 
